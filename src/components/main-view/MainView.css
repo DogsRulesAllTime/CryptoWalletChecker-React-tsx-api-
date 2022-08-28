@@ -1,0 +1,23 @@
+.blockView{
+    display: flex;
+    justify-content: center;
+}
+.descView{
+    flex-direction: row;
+}
+.formView{
+    display: flex;
+    height: 300px;
+    width: 300px;
+    background-color: green;
+    justify-content: center;
+    align-items: center;
+}
+.dataView{
+    display: flex;
+    height: 300px;
+    width: 300px;
+    background-color: blue;
+    justify-content: center;
+    align-items: center;
+}
