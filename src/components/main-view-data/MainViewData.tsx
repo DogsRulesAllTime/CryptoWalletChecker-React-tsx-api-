@@ -14,7 +14,7 @@ function MainViewData(props: Contr) {
         loader: true
       })
       
-        let URL: string = 'https://fakestoreapi.com/products/3';
+        let URL: string = 'https://fakestoreapi.com/products/17';
       
         fetch(URL)
         .then((res) => res.json())

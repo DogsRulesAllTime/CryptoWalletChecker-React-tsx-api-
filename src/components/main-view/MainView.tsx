@@ -2,28 +2,32 @@ import React,{useState} from "react";
 // import Loader from "../loader";
 import "./MainView.css";
 import MainViewData from "../main-view-data";
+import MainViewForm from "../main-view-form";
 
 function MainView() {
 
     interface Contr{
-        isWaiting: Boolean
+        isWaiting: Boolean,
+        
     }
     const [control, setControl] = useState<Contr>({
         isWaiting: false
     })
 
-    const clickBtn = () =>{
-        setControl({
-            isWaiting: !control.isWaiting
-        })
+    function clickBtn (coin: string, wallet: string) {
+        // setControl({
+        //     isWaiting: !control.isWaiting
+        // })
+        console.log(`qq from MainView. coin is ${coin}, wallet is ${wallet}`)
     }
   return (
   <div className="mainView">
     <h2 className="descView">MainView</h2>
     <div className="blockView">
         <div className="formView">
-            <button
-             onClick={()=>clickBtn()}>click me</button>
+            <MainViewForm 
+            clickBtn={clickBtn}
+            />
         </div>
         <div className="dataView">
             <MainViewData 
