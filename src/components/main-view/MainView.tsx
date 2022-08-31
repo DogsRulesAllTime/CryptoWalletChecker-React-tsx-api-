@@ -21,7 +21,7 @@ function MainView() {
         loader: true
       })
       
-        let URL: string = `https://fakestoreapi.com/products/${control.wallet}`;
+        const URL: string = `https://fakestoreapi.com/products/`;
       async function  dataCollect(url:string) {
       const response = await fetch(url)
       const res = await response.json()
@@ -44,7 +44,7 @@ function MainView() {
             coin: coin,
             wallet: wallet
         })
-        dataCollect(URL)
+        dataCollect(URL + wallet)
         console.log(data.category)
         // console.log(`qq from MainView. coin is ${coin}, wallet is ${wallet}`)
     }
