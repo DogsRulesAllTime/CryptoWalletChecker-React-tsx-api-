@@ -4,21 +4,49 @@ import "./MainView.css";
 import MainViewData from "../main-view-data";
 import MainViewForm from "../main-view-form";
 
+import {Contr, Data} from './../../types'
+
 function MainView() {
 
-    interface Contr{
-        isWaiting: Boolean,
-        
-    }
     const [control, setControl] = useState<Contr>({
-        isWaiting: false
+        isWaiting: false,
+        coin: undefined,
+        wallet: undefined
     })
 
-    function clickBtn (coin: string, wallet: string) {
-        // setControl({
-        //     isWaiting: !control.isWaiting
-        // })
-        console.log(`qq from MainView. coin is ${coin}, wallet is ${wallet}`)
+    const [data, setData] = useState<Data>({
+        category: undefined,
+        description: undefined,
+        price: undefined,
+        loader: true
+      })
+      
+        let URL: string = `https://fakestoreapi.com/products/${control.wallet}`;
+      async function  dataCollect(url:string) {
+      const response = await fetch(url)
+      const res = await response.json()
+      await setData({
+        category: res.category,
+        description: res.description,
+        price: res.price,
+        loader: false
+      })
+      console.log('Collect.....');
+     }
+
+    function clickBtn (coin: string, wallet: number) {
+        setData({
+            loader:true
+        })
+        setControl({
+            // isWaiting: !control.isWaiting,
+            isWaiting: true,
+            coin: coin,
+            wallet: wallet
+        })
+        dataCollect(URL)
+        console.log(data.category)
+        // console.log(`qq from MainView. coin is ${coin}, wallet is ${wallet}`)
     }
   return (
   <div className="mainView">
@@ -31,7 +59,13 @@ function MainView() {
         </div>
         <div className="dataView">
             <MainViewData 
-             isWaiting={control.isWaiting} 
+             isWaiting={control.isWaiting}
+             coin = {control.coin}
+             wallet = {control.wallet} 
+             category = {data.category}
+             loader = {data.loader}
+             description = {data.description}
+             price = {data.price}
              />
         </div>
     </div>

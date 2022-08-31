@@ -4,12 +4,15 @@ import "./MainViewForm.css";
 type Props = {
   clickBtn: (e: any) => void  
 } 
+// interface WalletInfo  {
+//   coin: String,
+//   wallet: number
+// }
 
 function MainViewForm<Props>(props:any) {
   const {clickBtn} = props;
-  const clgEv = (e:React.FormEvent<HTMLFormElement>):void =>{
+  const clgEv = (e:React.FormEvent<HTMLFormElement>): void =>{
     e.preventDefault();
-    console.log(1212312);
     const coin = (document.getElementById('cars') as HTMLInputElement).value;
     console.log(coin)
     const wallet = (document.getElementById('wallet') as HTMLInputElement).value;
