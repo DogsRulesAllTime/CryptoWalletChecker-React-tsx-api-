@@ -6,10 +6,11 @@ import "./MainViewData.css"
 
 function MainViewData(props: Contr) {
   const {isWaiting, coin, wallet, category, loader,description, price, error} = props;
-  const frameData = {isWaiting, category, description, price}
+  const frameData = {isWaiting, category, description, price, coin}
+  console.log(loader, error)
     const spinner = isWaiting ?(loader ? <Loader/> : null) : null
-    const info = !loader ? <DataFraim qq={frameData}/> : null
-    const errFrame = error? <ErrorFrame /> : null
+    const info = (!loader && !error && isWaiting) ? <DataFraim qq={frameData}/> : null
+    const errFrame = error ? <ErrorFrame /> : null
   return (
     <div>MainViewData
         <h3>{String(isWaiting)}</h3>
@@ -30,13 +31,14 @@ function MainViewData(props: Contr) {
 export default MainViewData
 
 const DataFraim = ({qq}: TestInter) =>{
-  const { category, description, price} = qq;
+  const { category, description, price, coin} = qq;
   return(
     <React.Fragment>
         <ul>
         <li>{category}</li>
         <li>{description}</li>
         <li>{price}</li> 
+        <li>coin {coin}</li> 
         </ul>
         </React.Fragment>
   )

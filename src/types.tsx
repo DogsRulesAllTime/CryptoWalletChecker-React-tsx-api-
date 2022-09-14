@@ -19,7 +19,6 @@ export interface Data{
 }
 
 export interface TestInter{
-
     qq:{
         isWaiting: Boolean,
         coin?: string,

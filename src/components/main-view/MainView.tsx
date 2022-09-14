@@ -17,7 +17,7 @@ function MainView() {
     category: undefined,
     description: undefined,
     price: undefined,
-    loader: true,
+    loader: false,
     error: false
   });
   // First variation of func
@@ -50,7 +50,7 @@ function MainView() {
     } catch (error) {
         console.log("Look at your Error, Dude .....", error);
         setData({
-            loader: true,
+            loader: false,
             error:true
         })
     }
